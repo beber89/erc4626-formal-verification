@@ -1,66 +1,54 @@
-## Foundry
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+# Formal Verification: Securing ERC-4626 Vaults with Certora Prover 
 
-Foundry consists of:
+This repository provides an example of how to use Certora Prover for formal verification of smart contracts. Follow the steps below to install Certora, obtain an API key, and execute `certoraRun` on the configuration file.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Prerequisites
 
-## Documentation
+Ensure you have the following installed:
+- Python 3 and `pip3`
+- A Solidity compiler compatible with your contract version
 
-https://book.getfoundry.sh/
+---
 
-## Usage
+## Installation
 
-### Build
+### Step 1: Install Certora CLI
 
-```shell
-$ forge build
+You need to install the Certora CLI to interact with the Certora Prover. Run the following command:
+
+```sh
+pip3 install certora-cli
 ```
 
-### Test
+Verify the installation:
 
-```shell
-$ forge test
+```sh
+certoraRun --help
 ```
 
-### Format
+---
 
-```shell
-$ forge fmt
+## Obtaining an API Key from Certora
+
+To use Certora Prover, you must have an API key. Sign up or log in to [Certora's website](https://certora.com/). Finally, set up your API key in your environment variables:
+
+```sh
+export CERTORAKEY=<your_api_key>
 ```
 
-### Gas Snapshots
 
-```shell
-$ forge snapshot
+---
+
+## Running Certora Prover
+
+To verify the smart contract, execute `certoraRun` with the provided configuration file:
+
+```sh
+certoraRun certora/VaultERC.conf
 ```
 
-### Anvil
+If you are using a Solidity contract, ensure your configuration file correctly specifies the contract paths and verification rules.
 
-```shell
-$ anvil
-```
 
-### Deploy
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
